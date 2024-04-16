@@ -1,18 +1,17 @@
-<html>
-    <head>
-        <title>Django Girls blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Daniblog</a></h1>
-        </div>
+<!--Conecta la plantilla base con esta pagina-->
+{% extends 'blog/base.html' %}
 
-        <!--Las llaves se usan para mostrar el resultado almacenado en la variable posts
-        con el ciclo for se muestra el title de los blogs y no se muestra como una lista-->
-        {% for post in posts %}
-            <div>
-                <p> publicado: {{ post.published_date }}</p><!--post.published_date toma fecha-publicacion-->
-                <h2><a href="">{{ post.title }}</a></h2><!--post.title toma el titulo-->
-                <p>{{ post.text|linebreaksbr }}</p><!--muestra el texto y linebreaksbr es salto de linea-->
+{% block content %}
+    <!--Las llaves se usan para mostrar el resultado almacenado en la variable posts
+    con el ciclo for se muestra el title de los blogs y no se muestra como una lista-->
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                <p>publicado: {{ post.published_date }}</p>
             </div>
-        {% endfor %}
+            <!--Se agrea URL al titulo del post y pk=post.pk es para buscar por llave primaria-->
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p><!--linebreaksbr es un salto de linea-->
+        </div>
+    {% endfor %}
+{% endblock %}

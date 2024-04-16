@@ -1,0 +1,27 @@
+<!--Carga los archivos estáticos como blog.css-->
+{% load static %}
+
+<html>
+    <head>
+        <title>Django Girls blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"><!--Estilo de la letra para agregarlo en el archivo css-->
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}"><!--Agregar el archivo css a la pagina-->
+    </head>
+    <body>
+        <!--Estilo base para el encabezado-->
+        <div class="page-header">
+            <h1><a href="/">Daniblog</a></h1>
+        </div>
+        
+        <!--Estilo base para el contenido-->
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
