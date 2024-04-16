@@ -7,16 +7,12 @@
             <h1><a href="/">Daniblog</a></h1>
         </div>
 
-        <div>
-            <p>published: 15.04.2024, 16:19</p>
-            <h2><a href="">Bienvenidos</a></h2>
-            <p>Bienvenidos a esta pagina donde nos encargaremos de subir blogs enfocados en temas relevantes en la actualidad, ya sea deportivo, económico o politico, todo lo veran e primera mano desde nuestro blog. Soy Daniel madera el creador de Daniblog.</p>
-        </div>
-
-        <div>
-            <p>published: 15.04.2024, 12:14</p>
-            <h2><a href="">Sobre el autor</a></h2>
-            <p>Soy Daniel madera, programador web fullstack, tengo 19 años y llevo 3 años adquiriendo conocimientos en el area de las tecnologias, enfocando mis esfuerzos en aprender a crear aplicaciones desde todas las areas de desarrollo, estoy aprendiendo a usar python y django, ésta pagina es una prueba de ello.</p>
-        </div>
-    </body>
-</html>
+        <!--Las llaves se usan para mostrar el resultado almacenado en la variable posts
+        con el ciclo for se muestra el title de los blogs y no se muestra como una lista-->
+        {% for post in posts %}
+            <div>
+                <p> publicado: {{ post.published_date }}</p><!--post.published_date toma fecha-publicacion-->
+                <h2><a href="">{{ post.title }}</a></h2><!--post.title toma el titulo-->
+                <p>{{ post.text|linebreaksbr }}</p><!--muestra el texto y linebreaksbr es salto de linea-->
+            </div>
+        {% endfor %}
