@@ -12,6 +12,10 @@
     <body>
         <!--Estilo base para el encabezado-->
         <div class="page-header">
+            <!--Solo muestra el boton de editar a los usuario que se hayan logueado-->
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
             <h1><a href="/">Daniblog</a></h1>
         </div>
         
